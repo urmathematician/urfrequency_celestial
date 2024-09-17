@@ -1,4 +1,5 @@
 
+
 <html lang="en">
     
 <html lang="ur">
@@ -269,6 +270,14 @@ background-image: url('https://i.pinimg.com/originals/9d/73/af/9d73af36e486def0f
             cursor: pointer;
             font-size: 16px;
         }
+        .button3 {
+            padding: 10px 20px;
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
         .button:hover {
             background: #0056b3;
         }
@@ -501,20 +510,18 @@ background-image: url('https://i.pinimg.com/originals/9d/73/af/9d73af36e486def0f
   
     <h1>Event news</h1>
             </span>
-    
-<h4>Pakistan Badar B</h4>
-<script>
-	var norad_n2yo = '27003';
-</script>
-<script type="text/javascript" src="https://www.n2yo.com/js/widget-tracker.js"></script>
-	    
-<h4>Moon Images taken by ICube-Q B</h4>
-     <img src="https://i.dawn.com/primary/2024/05/10134954a5f412e.jpg" border="0" />
-	    
-<div>
-	 <h4>ISIS at Lahore</h4>
-	<div style='display:inline-block; border: 1px solid #CCC; border-radius: 6px; -webkit-border-radius: 6px; -o-border-radius: 6px; position: relative; overflow: hidden; width: 310px; height: 450px;'> <iframe src='https://spotthestation.nasa.gov/widget/widget.cfm?country=Pakistan&region=None&city=Lahore&theme=2' width='310' height='450' frameborder='0' ></iframe></div>
+    <button class="button3" onclick="openPopup()">Pakistan Badar B</button>
+
+<div class="popup" id="popup">
+    <button class="close" onclick="closePopup()">×</button>
+    <iframe
+        src="https://www.n2yo.com/?s=27003"
+        width="600"
+        height="400"
+        frameborder="0">
+    </iframe>
 </div>
+
 	    </div>
 </div>
     <div class="container-space"></div>
@@ -749,6 +756,10 @@ background-image: url('https://i.pinimg.com/originals/9d/73/af/9d73af36e486def0f
     }
     
     
+        function getAstronomicalEventData() {
+            const cityCoords = document.getElementById('city').value.split(',');
+            const numDays = parseInt(document.getElementById('days').value);
+
             displaySunTimes(cityCoords[1], cityCoords[0], numDays);
             displaySunPosition();
             displayAsteroidInfo();
@@ -784,12 +795,17 @@ background-image: url('https://i.pinimg.com/originals/9d/73/af/9d73af36e486def0f
 
             document.getElementById('sunPosition').innerText = `Current Sun Position: Azimuth - ${azimuth.toFixed(2)}°, Altitude - ${altitude.toFixed(2)}°`;
         }
+
+        
         function getSunTime(date, eventType, latitude, longitude) {
             const sunTimes = SunCalc.getTimes(date, latitude, longitude);
             const time = eventType === 'sunrise' ? sunTimes.sunrise : sunTimes.sunset;
             return luxon.DateTime.fromJSDate(time).toLocaleString(luxon.DateTime.TIME_24_SIMPLE);
         }
 // Function to get planet data
+
+
+
     // Initialize Leaflet map
     var map = L.map('map').setView([0, 0], 2);
 
